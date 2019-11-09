@@ -163,7 +163,7 @@ int main(int argc, char** argv) {
 
     fout << endNode << endl;
 		
-	fout.close();
+    fout.close();
     fin.close();
-	return 0;
+    return 0;
 }
