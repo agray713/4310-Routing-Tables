@@ -13,16 +13,16 @@ struct Routing {      //Structure which will hold individual routing table infor
 
 int main(int argc, char** argv) {
 
-	string round = argv[2]; //takes the second argument to be later converted to an int to count rounds
+    string round = argv[2]; //takes the second argument to be later converted to an int to count rounds
 
     int count = 0,
-		from,
-		to,
-		value,
-		max = 0,
-		lastNode,
-		loopCount = 0,
-		dvPacket = 0,
+	from,
+	to,
+	value,
+	max = 0,
+	lastNode,
+	loopCount = 0,
+	dvPacket = 0,
         roundCount = 0,
         rounds = round[0] - 48, //calculation to convert string read from command line to int for later loop
         startNode = 0, //to test path from starting node to ending node
@@ -141,26 +141,26 @@ int main(int argc, char** argv) {
         }
     }
 
-    for(int i = 0; i <= max; ++i){  //outputs the routing tables after full convergence
-                fout << "  Routing table for node " << i <<  endl
-				     << "  dest     cost      next hop" << endl;           
-				for (int j = 0; j < max + 1; j++) {
-					fout << setw(6) <<  routing[i].nodeA.at(j) << " \t " << setw(6) << routing[i].price.at(j) 
-                         << " \t " << setw(4) << routing[i].nodeB.at(j) << endl;
-				}
-            fout << endl << endl;
-        }
+    // for(int i = 0; i <= max; ++i){  //outputs the routing tables after full convergence
+    //             fout << "  Routing table for node " << i <<  endl
+	// 			     << "  dest     cost      next hop" << endl;           
+	// 			for (int j = 0; j < max + 1; j++) {
+	// 				fout << setw(6) <<  routing[i].nodeA.at(j) << " \t " << setw(6) << routing[i].price.at(j) 
+    //                      << " \t " << setw(4) << routing[i].nodeB.at(j) << endl;
+	// 			}
+    //         fout << endl << endl;
+    //     }
 
-    fout << endl << "Number of rounds to converge: " << loopCount-1 << endl //outputs the requested counts
-         << "Last node to converge completely: " << lastNode  << endl 
-         << "Number of DV messages sent: " << dvPacket << endl << endl;
+    // fout << endl << "Number of rounds to converge: " << loopCount-1 << endl //outputs the requested counts
+    //      << "Last node to converge completely: " << lastNode  << endl 
+    //      << "Number of DV messages sent: " << dvPacket << endl << endl;
 
-    while(startNode != endNode){ //displays path from starting node to end node with hopes
-      fout << startNode << " ---> ";
-      startNode = routing[startNode].nodeB.at(endNode);
-    }
+    // while(startNode != endNode){ //displays path from starting node to end node with hopes
+    //   fout << startNode << " ---> ";
+    //   startNode = routing[startNode].nodeB.at(endNode);
+    // }
 
-    fout << endNode << endl;
+    // fout << endNode << endl;
 		
     fout.close();
     fin.close();
