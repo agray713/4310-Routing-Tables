@@ -1,0 +1,20 @@
+For this project I chose to mainly rely on the vector library in C++.  This decision was made because I knew that we needed 
+to be able to handle input files containing a list of nodes and connections with the amount of entries being unknown. 
+
+I chose to create a structure of the integer vectors in order to store data from the file and then created and initialized 
+an array of this structure for each node counted while reading in the file.  All nodes were given a cost of 0 to itself and 
+a value of 99999 prior to comparing data with each other. Originally I was using MAX_INT in order to initialize unknown paths 
+however this lead to issues in the integers wrapping back to negative when doing calculations.
+
+Before reading into the individual tables I utilized more vectors for the two nodes and the cost when reading into the file. 
+I then used this data to find the max node as well as the amount of lines read in from the input file. 
+The next step I took was to create an array of vectors for each node that help the neighbors so I would know who to send DV 
+messages too. I went about this by checking my current routing tables and if the value was not 0 or 99999 then I knew there was 
+a direct connection based on the input values.
+
+In the actual construction of the converging tables I used a flag that would see if during an entire round of exchanging 
+messages would cause us to loop and trade information again. Once this process went through without altering this Boolean
+we could assume the previous round was the one in which it converged.
+
+For items such as rounds to converge, last node converged and number of messages sent, I incremented certain integers 
+throughout in order to print results in the end to the results file.
